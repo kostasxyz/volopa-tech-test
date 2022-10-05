@@ -1,8 +1,11 @@
 # Volopa Tech test
 ---
 ![Alt text](screenshots/volopa-img-001.png?raw=true "Screenshot 1")
+---
 ![Alt text](screenshots/volopa-img-002.png?raw=true "Screenshot 2")
+---
 ![Alt text](screenshots/volopa-img-003.png?raw=true "Screenshot 3")
+---
 ## Frontend
 ### In the volopa-tech-test-app directory, run:
 ##### `npm i` to set up the project
@@ -32,6 +35,8 @@ FRONTEND_URL=
 APP_PORT=5
 SANCTUM_STATEFUL_DOMAINS=
 ```
+
+Project is not as one dockerized app. I've spend some time trying to compose a laravel / cra-react and couldnt make hot reloading work. Decided to move on.
 
 ### Auth token
 The app uses token based authentication.
