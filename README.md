@@ -1,5 +1,8 @@
 # Volopa Tech test
 ---
+![Alt text](screenshots/volopa-img-001.png?raw=true "Screenshot 1")
+![Alt text](screenshots/volopa-img-002.png?raw=true "Screenshot 2")
+![Alt text](screenshots/volopa-img-003.png?raw=true "Screenshot 3")
 ## Frontend
 ### In the volopa-tech-test-app directory, run:
 ##### `npm i` to set up the project
