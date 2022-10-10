@@ -36,8 +36,6 @@ APP_PORT=5
 SANCTUM_STATEFUL_DOMAINS=
 ```
 
-Project is not as one dockerized app. I've spend some time trying to compose a laravel / cra-react and couldnt make hot reloading work. Decided to move on.
-
 ### Auth token
 The app uses token based authentication.
 - Using sanctum, created an api auth system that sends a auth_token at login response and a refresh_token as a httpOnly cookie (not secure for dev) 
@@ -55,8 +53,9 @@ The app uses token based authentication.
 
 ### RateChecker
 I have worked on this as much as I could afford timewise, still needs a lot of work and executive decisions.
-Right now the converter is a custom solution converting "to" from "from".
-That means that when the user enters a value in the "to" field the "from" changes to reflect the necesary amount.
+Right now the converter is a custom solution converting "to" from "from". Convertion calculations are down client side, 
+idea being to handle UI info quick and validation later when user confirms convertion by doing checks and calculations server side.
+When the user enters a value in the "to" field the "from" changes to reflect the necesary amount.
 Also when a user changes currencies the "to" amount stays constant while the "from" changes to adjust.
 A greater improvement would be a lib like https://openexchangerates.github.io/money.js/ or dinero.js to handle convertions.
 Decimal places are handled vary basic with toFixed, a lib for currency would be again a more elegant solution.
@@ -78,7 +77,11 @@ $table->timestamps();
 The base field is the currency that the target rate references, so 
 a target currency EUR is 1.14~ rate with the GBP base.
 
-At this stage we could avoid the `base` field and use aglobal base currency and we can handle the inverse convertions calculating through the base. (example further down)
+At this stage we could avoid the `base` field and use a global base currency and we can handle the inverse convertions calculating through the base. (example further down)
+
+A different solution thatn the one implementes would be to have a currency and and rates table with 2 foreign keys on the rates table to reference base and target currency and their respective rate.
+
+I choose to have all in one table (base, target, rate) to avoid possibly unnecessary joins.
 
 I think ideally a full list of all currency pairs and rates should be implemented.
 example
